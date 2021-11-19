@@ -1,20 +1,22 @@
 const path = require('path')
+const baseConfig = require('./webpack.common.js')
+const {merge} = require('webpack-merge')
 
-module.exports = {
+config = {
     // inform webapck that we're building a bundle
 
     target: 'node',
 
-    entry: './src/index.js',
+    entry: path.resolve(__dirname,'..','./src/server/index.js'),
 
     output:{
-        path:path.resolve(__dirname,'build'),
+        path:path.resolve(__dirname,'..','public'),
         filename:'bundle.js'
     },
 
     module: {
         rules:[{
-            test:/\.jsx?$/,
+            test:/\.(js)x?$/,
             loader:'babel-loader',
             exclude: /node_modules/,
         }]
@@ -22,3 +24,5 @@ module.exports = {
     },
     mode:'development'
 }
+
+module.exports = merge(baseConfig,config)

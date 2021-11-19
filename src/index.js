@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom'
+import Router from './component/Routes/Routes'
 
-const Index = () => {
-    var test=0;
-    console.log(test)
-    return ( <h1>TODO App Shubham .... `</h1> );
-}
  
-export default Index;
-
-ReactDom.render(<Index />,document.getElementById('root'))
+ReactDom.hydrate((
+    <React.StrictMode>
+        <Router />
+    </React.StrictMode>
+),document.querySelector('#root'))
